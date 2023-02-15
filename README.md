@@ -1,6 +1,6 @@
 
 
-![](https://github.com/rcherara/microservice-architecture/blob/master/docs/images/Targert-platform-architecture.png?raw=true)
+![node_microservices](https://github.com/abdellahaarab/node_microservices/blob/main/assets/img/Targert-platform-architecture.png?raw=true)
 
 # Node Microservices 
 
