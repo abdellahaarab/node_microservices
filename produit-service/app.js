@@ -27,16 +27,16 @@ app.post('/produits/ajouter', (req, res,next) => {
 
 
 app.get('/produits/acheter', (req, res, next) => {
-    // const { ids} = req.body;
-    // Produit.find({_id : {$in : ids}})
-    Produit.findById(req.params.id)
-    .then(produit => res.json(produit))
-    .catch(err => res.status(400).json(err));
+    const { ids} = req.body;
+    Produit.find({_id : {$in : ids}})
+    // Produit.findById(req.params.id)
+        .then(produit => res.json(produit))
+        .catch(err => res.status(400).json(err));
 });
 
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT} -> http://localhost:9000/`);
 });
 
 

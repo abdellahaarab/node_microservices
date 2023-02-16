@@ -18,6 +18,8 @@ Microservices Node Js application 👩‍🚀.
 
 ## Short scripts 🎉
     ` npm i express mongoose nodemon `
+    ` npm i express mongoose nodemon axios`
+    ` npm install express nodemon mongoose jsonwebtoken bcryptjs `
     ` npm start      `
 
 
@@ -50,6 +52,19 @@ http://localhost:9000/produits/acheter
     }
     `
 
+## Add produit to the database 🤳
+
+http://localhost:9001/commande/ajouter
+
+    `
+    {
+        email_utilisateur: "user@hotmail.com",
+        "ids":[
+            "63ed3c8eb2b2502702ff61c7",
+            "63ed41dab8cae0bb771453bd"
+        ]
+    }
+    `
 
 
 ##  Statistics 📈
@@ -67,7 +82,11 @@ http://localhost:9000/produits/acheter
     `npm i express`
     `npm i mongoose`
     `npm i nodemon`
+    `npm i axios`
+    `npm i jsonwebtoken`
+    `npm i bcryptjs`
     `npm start`
+
 
 ## Requirements tools 💪
 
