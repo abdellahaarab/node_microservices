@@ -35,6 +35,12 @@ app.get('/produits/acheter', (req, res, next) => {
 });
 
 
+app.get('/produits/all', (req, res, next) => {
+    Produit.find({})
+        .then(produit => res.json(produit))
+        .catch(err => res.status(400).json(err));
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT} -> http://localhost:9000/`);
 });

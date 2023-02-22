@@ -52,7 +52,7 @@ http://localhost:9000/produits/acheter
     }
     `
 
-## Add produit to the database 🤳
+## Add commande to the database 🤳
 
 http://localhost:9001/commande/ajouter
 
