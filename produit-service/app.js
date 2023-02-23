@@ -42,6 +42,27 @@ app.get('/produits/all', (req, res, next) => {
         .catch(err => res.status(400).json(err));
 });
 
+
+app.get('/produits/update', (req, res, next) => {
+    const { ids,nom,description,prix } = req.body;
+    Produit.updateOne(
+        {_id : {$in : ids}},
+        {
+            "nom":nom,
+            "description":description,
+            "prix": prix
+        }, 
+        function (err, docs) {
+            if (err){
+                console.log(err)
+            }
+            else{
+                console.log("Updated Docs : ", docs);
+            }
+        })
+});
+
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT} -> http://localhost:9000/`);
 });
