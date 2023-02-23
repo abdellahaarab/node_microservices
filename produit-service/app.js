@@ -3,9 +3,10 @@ const app = exprees();
 const PORT = process.env.PORT_ONE || 9000;
 const mongoose = require('mongoose');
 const Produit = require('./Produit');
-
+const cors = require('cors')
 
 app.use(exprees.json());
+app.use(cors());
 mongoose.set('strictQuery',true);
 mongoose.connect("mongodb://127.0.0.1:27017/produit",
         {
@@ -34,6 +35,12 @@ app.get('/produits/acheter', (req, res, next) => {
         .catch(err => res.status(400).json(err));
 });
 
+
+app.get('/produits/all', (req, res, next) => {
+    Produit.find({})
+        .then(produit => res.json(produit))
+        .catch(err => res.status(400).json(err));
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT} -> http://localhost:9000/`);
