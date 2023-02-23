@@ -1,29 +1,38 @@
 <!DOCTYPE html>
-<html> 
-  <head> 
+<html>
+  <head>
     <meta charset="utf-8">
-    <title>Aarab Product List</title>
+    <title>Product List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
   </head>
-  <body> 
-    <div class="container mt-5">  
+  <body>
+
+    <div class="container mt-5">
+      <button class="btn btn-primary add-product" id="add-product-AF">Add product</button>
+      <button class="btn btn-info edit-product" id="edit-product-AF">Edit</button>
+      <button class="btn btn-danger delete-product" id="delete-product-AF">Delete</button>
+    </div>
+
+    <div class="container mt-5">
       <h1 class="text-center">Product List</h1>
       <table class="table table-striped mt-3">
-        <thead class="">
+        <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prix</th>
             <th>Description</th>
             <th>Created at</th>
+            <th>Action</th>
           </tr>
         </thead>
-        <tbody id="product-list">
+        <tbody id="product-list"> 
         </tbody>
       </table>
     </div>
 
-    <!-- <div class="container mt-5">
+    <div class="container mt-5" id="Add-Product">
       <h1 class="text-center">Add Product</h1>
       <form id="product-form" class="mt-3">
         <div class="form-group">
@@ -40,11 +49,15 @@
         </div>
         <button type="submit" class="btn btn-primary">Add Product</button>
       </form>
-    </div> -->
+    </div>
 
-    <div class="container mt-5">
+    <div class="container mt-5" id="Edit-Product">
       <h1 class="text-center">Edit Product</h1>
       <form id="edit-product-form" class="mt-3">
+        <div class="form-group">
+          <label for="edit-id">Id :</label>
+          <input type="text" class="form-control" id="edit-id" nom="id" value="63f7a0aaadfaa5693e98a269" required>
+        </div>
         <div class="form-group">
           <label for="edit-nom">Nom :</label>
           <input type="text" class="form-control" id="edit-nom" nom="nom" required>
@@ -55,13 +68,24 @@
         </div>
         <div class="form-group">
           <label for="edit-prix">Prix :</label>
-          <input type="number" class="form-control" id="edit-prix" nom="prix" required>
+          <input type="number" class="form-control" id="edit-prix" nom="prix" value=22 required>
         </div>
-        <input type="hidden" id="edit-id" nom="id">
         <button type="submit" class="btn btn-primary">Save Changes</button>
         <button type="button" class="btn btn-secondary" id="cancel-edit">Cancel</button>
       </form>
     </div>
+
+    <div class="container mt-5" id="Delete-Product">
+      <h1 class="text-center">Delete Product</h1>
+      <form id="" class="mt-3">
+        <div class="form-group">
+          <label for="delete-id">Id :</label>
+          <input type="text" class="form-control" id="delete-id" value="" required />
+        </div>
+        <button type="submit" class="btn btn-secondary" id="delete">Delete</button>
+      </form>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
