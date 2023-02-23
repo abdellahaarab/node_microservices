@@ -8,7 +8,7 @@ Microservices Node Js application 👩‍🚀.
 
 ## Cloning from GitHub 
 
-1. Open your terminal and then type. `$ git clone https://github.com/abdellahaarab/node_microservices.git branch dev` This clones the repo.
+1. Open your terminal and then type. `$ git clone https://github.com/abdellahaarab/node_microservices.git --branch dev` This clones the repo.
 2. cd into the new folder `$ node_microservices`.
 
 3. type  `$ npm install`. This installs the required dependencies.
@@ -86,6 +86,7 @@ http://localhost:9001/commande/ajouter
     `npm i jsonwebtoken`
     `npm i bcryptjs`
     `npm start`
+    `npm i cors`
 
 
 ## Requirements tools 💪

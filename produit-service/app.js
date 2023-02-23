@@ -3,9 +3,10 @@ const app = exprees();
 const PORT = process.env.PORT_ONE || 9000;
 const mongoose = require('mongoose');
 const Produit = require('./Produit');
-
+const cors = require('cors')
 
 app.use(exprees.json());
+app.use(cors());
 mongoose.set('strictQuery',true);
 mongoose.connect("mongodb://127.0.0.1:27017/produit",
         {
