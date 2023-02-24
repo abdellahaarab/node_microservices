@@ -37,9 +37,8 @@ async function httpRequest(ids) {
             headers: {
                 'Content-Type': 'application/json'
             }
-            
         });
-        console.log(response.data);
+        // console.log(response.data);
         return prixTotal(response.data);
     } catch (error) {
         console.error(error);
@@ -47,22 +46,32 @@ async function httpRequest(ids) {
 }
 
 app.post("/commande/ajouter", async (req, res, next) => {
-
     const { ids, email_utilisateur } = req.body;
     httpRequest(req.body.ids)
     .then(total => {
         const newCommande = new Commande({
-            ids,email_utilisateur: email_utilisateur,prix_total: 555,
-            // ids,email_utilisateur: email_utilisateur,prix_total: total,
-        }
-    );
-
+            // ids,email_utilisateur: email_utilisateur,prix_total: 555,
+            produits : ids ,email_utilisateur: email_utilisateur,prix_total: total,
+        } 
+    ); 
+    
     newCommande.save()
         .then(commande => res.json(commande))
         .catch(error => res.status(400).json({ error }));
         });
     });
 
+app.get("/commande/all", async (req, res, next) => {
+    Commande.find({})
+        .then(produit => res.json(produit))
+        .catch(err => res.status(400).json(err));
+});
+
+app.delete("/commande/deleteAll", async (req, res, next) => {
+    Commande.deleteMany({},{})
+        .then(produit => res.json(produit))
+        .catch(err => res.status(400).json(err));
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT} => http://localhost:9001/`);

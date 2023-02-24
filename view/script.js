@@ -152,3 +152,8 @@ deleteBtn.addEventListener('click', event =>{
     DeleteProduct.style.display == "block" ? DeleteProduct.style.display = "none":DeleteProduct.style.display = "block";
   })
 
+
+
+
+
+ 

@@ -26,7 +26,7 @@ app.post('/produits/ajouter', (req, res,next) => {
     .catch(err => res.status(400).json(err));
 });
 
-app.get('/produits/acheter', (req, res, next) => {
+app.post('/produits/acheter', (req, res, next) => {
     const { ids} = req.body;
     Produit.find({_id : {$in : ids}})
     // Produit.findById(req.params.id)
