@@ -1,11 +1,11 @@
 {
-  "name": "node_microservices",
+  "nom": "node_microservices",
   "version": "1.0.0",
   "description": "Microservices Node Js application 👩‍🚀",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",

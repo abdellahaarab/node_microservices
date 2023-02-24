@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Product List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+ 
+  </head>
+<body>
+    <div class="container mt-5">
+        <a href="index.html" class="btn btn-info"> - Back</a>
+      </div>
+    <div class="container mt-5 d-flex">
+        <input type="text" class="form-control" id="serchVal" value="63f7db5f96e946030254e27c"/>
+        <button class="mx-3 btn btn-Info " id="serch">Recherche</button>
+    </div>
+    <div class="container mt-5">
+        <h1 class="text-center">Product List</h1>
+        <table class="table table-striped mt-3">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Prix</th>
+              <th>Description</th>
+              <th>Created at</th>
+            </tr>
+          </thead>
+          <tbody id="ONEproduct"> 
+          </tbody>
+        </table>
+      </div>
+    <script>
+        // serch Trt
+const productOne = document.getElementById("ONEproduct");
+const serchFild = document.getElementById("serch");
+
+serchFild.addEventListener("click",e=>{
+  // e.preventDefault();
+  const serchVal = document.getElementById("serchVal").value;
+  const product = {
+    ids:[serchVal ]
+    }
+ fetch("http://localhost:9000/produits/acheter", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(product)
+  })
+  .then(res => {
+    if(res.ok){
+        res.json()
+            .then(
+            v=>{
+                productOne.innerHTML = `
+                    <tr>
+                        <td>${v[0].nom}</td> 
+                        <td>${v[0].prix}$</td>
+                        <td>${v[0].description}</td>
+                        <td>${v[0].created_at}</td>
+                    <tr>
+                `;
+            }).catch(error => console.log("Error !!"));
+    } 
+  }).catch(error => console.log("Error !!"));
+})
+    </script>
+</body>
+</html>

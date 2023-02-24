@@ -9,6 +9,19 @@
         "html-has-lang": "off"
       }
     ],
-    "meta-viewport": "off"
+    "meta-viewport": "off",
+    "button-type": "off",
+    "axe/parsing": [
+      "default",
+      {
+        "duplicate-id-aria": "off"
+      }
+    ],
+    "axe/forms": [
+      "default",
+      {
+        "label": "off"
+      }
+    ]
   }
 }

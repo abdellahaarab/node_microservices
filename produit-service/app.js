@@ -26,8 +26,7 @@ app.post('/produits/ajouter', (req, res,next) => {
     .catch(err => res.status(400).json(err));
 });
 
-
-app.get('/produits/acheter', (req, res, next) => {
+app.post('/produits/acheter', (req, res, next) => {
     const { ids} = req.body;
     Produit.find({_id : {$in : ids}})
     // Produit.findById(req.params.id)
@@ -35,11 +34,44 @@ app.get('/produits/acheter', (req, res, next) => {
         .catch(err => res.status(400).json(err));
 });
 
-
 app.get('/produits/all', (req, res, next) => {
     Produit.find({})
         .then(produit => res.json(produit))
         .catch(err => res.status(400).json(err));
+});
+
+app.put('/produits/update', (req, res, next) => {
+    const { ids, nom, description, prix } = req.body;
+    Produit.updateOne(
+        {_id : ids},
+        // {_id : {$in : ids}},
+        {
+            "nom":nom,
+            "description":description,
+            "prix": prix
+        }, 
+        function (err, docs) {
+            if (err){
+                // console.log(err)
+            }
+            else{
+                // console.log("Updated Docs : ", docs);
+            }
+        })
+});
+
+app.delete('/produits/delete', (req, res, next) => {
+    const { ids,nom,description,prix } = req.body;
+    Produit.deleteOne(
+        {_id : ids}, 
+        function (err, docs) {
+            if (err){
+                // console.log(err)
+            }
+            else{
+                // console.log("Updated Docs : ", docs);
+            }
+        })
 });
 
 app.listen(PORT, () => {

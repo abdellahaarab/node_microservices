@@ -1,5 +1,5 @@
 {
-  "name": "auth-service",
+  "nom": "auth-service",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
