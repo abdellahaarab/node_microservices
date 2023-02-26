@@ -3,7 +3,7 @@ const app = exprees();
 const PORT = process.env.PORT_ONE || 9000;
 const mongoose = require('mongoose');
 const Produit = require('./Produit');
-const cors = require('cors')
+const cors = require('cors');
 
 app.use(exprees.json());
 app.use(cors());

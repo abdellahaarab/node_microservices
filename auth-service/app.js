@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs');
 mongoose.set('strictQuery', true);
 mongoose.connect(
-    "mongodb://localhost/auth",
+    "mongodb://127.0.0.1:27017/auth",
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -39,6 +39,7 @@ app.post("/auth/register", async (req, res) => {
     });
 }
 });
+
 app.post("/auth/login", async (req, res) => {
     const { email, mot_passe } = req.body;
     const utilisateur = await Utilisateur.findOne({ email });
@@ -62,6 +63,12 @@ app.post("/auth/login", async (req, res) => {
         }
     });
     }
+});
+
+app.get("/auth/all", async (req, res) => {
+    Utilisateur.find({})
+        .then(produit => res.json(produit))
+        .catch(err => res.status(400).json(err));
 });
 
 app.listen(PORT, () => {
