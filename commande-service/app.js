@@ -3,9 +3,9 @@ const app = express();
 const PORT = process.env.PORT_ONE || 9001;
 const mongoose = require("mongoose");
 const Commande = require("./commande");
-// const cors = require('cors');
+const cors = require('cors');
 
-// app.use(cors());
+app.use(cors());
 
 const axios = require('axios');
 

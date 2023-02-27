@@ -6,7 +6,10 @@ const mongoose = require("mongoose");
 const Utilisateur = require("./utilisateur");
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs');
+const cors = require('cors');
+
 mongoose.set('strictQuery', true);
+app.use(cors());
 mongoose.connect(
     "mongodb://127.0.0.1:27017/auth",
     {
@@ -19,15 +22,16 @@ mongoose.connect(
     }
 );
 app.use(express.json());
-app.post("/auth/register", async (req, res) => {
+
+app.put("/auth/register", async (req, res) => {
     let { nom, email, mot_passe } = req.body;
-    const userExists = await Utilisateur.findOne({email });
+    const userExists = await Utilisateur.findOne({email:email});
     if (userExists) {
         return res.json({ message: "Cet utilisateur existe déjà" });
     } else {
         bcrypt.hash(mot_passe, 10, (err, hash) => {
         if (err) {
-            return res.status(500).json({error: err,});
+            return res.status(500).json({error: err });
     } else {
         mot_passe = hash;
         const newUtilisateur = new
@@ -71,7 +75,7 @@ app.get("/auth/all", async (req, res) => {
         .catch(err => res.status(400).json(err));
 });
 
-app.listen(PORT, () => {
+app.listen(PORT,'0.0.0.0', () => {
     console.log(`Server is running on port ${PORT} => http://localhost:9002/`);
 });
     

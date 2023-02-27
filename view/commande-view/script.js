@@ -13,13 +13,18 @@ function getCommandes() {
       productList.innerHTML = "";
       commandes.forEach(commande => {
         const tr = document.createElement("tr");
+        let option = "";
+        for(var i=0; i < commande.produits.length; i++) {
+          option += '<option>'+ commande.produits[i]+'</option>';
+        }
         tr.innerHTML = `
           <td>${commande.email_utilisateur}</td> 
           <td>${commande.prix_total}</td>
           <td>${commande.created_at}</td>
           <td>
-            <button class="btn btn-info edit-product" data-id="">Edit</button>
-            <button class="btn btn-danger delete-product" id="delete-id" value="">Delete</button>
+              <select class="form-control" name="" id="">
+                  ${option}
+              </select>
           </td>
         `;
         productList.appendChild(tr);
